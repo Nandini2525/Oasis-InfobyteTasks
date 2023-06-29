@@ -1,0 +1,97 @@
+import java.util.Scanner;
+
+public class task2 {
+    static Scanner sc = new Scanner(System.in);
+    static int at = 1000;
+    static String id;
+    static int pin;
+    static String history = "";
+    static int c = 0;
+    static String recv_num;
+    static int amt_transfer;
+
+    public static boolean login() {
+        System.out.println(" enter p");
+        int p = sc.nextInt();
+        System.out.println(" enter i");
+        String i = sc.next();
+        if (pin == p && id.equals(i)) {
+            return true;
+        }
+
+        return false;
+    }
+
+    public static int deposit() {
+        System.out.println(" enter amount to deposit");
+        int a = sc.nextInt();
+        at = at + a;
+        history += "Amount deposited";
+        c++;
+        return at;
+    }
+
+    public static int withdraw() {
+        System.out.println(" enter amount to withdraw");
+        at = at - sc.nextInt();
+        history += " Amount withdrawed ";
+        c++;
+        return at;
+    }
+
+    public static int transfer() {
+        System.out.println(" enter receiver acc number");
+        recv_num = sc.next();
+        System.out.println(" enter amount to transfer");
+        amt_transfer = sc.nextInt();
+        at = at - amt_transfer;
+        history += "Amount Transfered ";
+        c++;
+        return at;
+    }
+
+    public static String transhistory() {
+        if (c > 0) {
+            return history;
+        } else {
+            return " not performed any actions";
+        }
+    }
+
+    public static void main(String[] args) {
+        System.out.println(" enter id");
+        id = sc.nextLine();
+        System.out.println(" enter pin");
+        pin = sc.nextInt();
+        boolean flag = true;
+        if (login()) {
+            System.out.println("successfully loged in");
+            while (flag) {
+                System.out.println(
+                        " enter an Option: \n1.Deposit\n2.Withdraw\n3.transfer\n4.transaction hiistory\n 5.Quit");
+                int option = sc.nextInt();
+                switch (option) {
+                    case 1:
+                        System.out.println(deposit());
+                        break;
+                    case 2:
+                        System.out.println(withdraw());
+                        break;
+                    case 3:
+                        System.out.println(transfer());
+                        break;
+                    case 4:
+                        System.out.println(transhistory());
+                        break;
+                    case 5:
+                        flag = false;
+                        System.out.println("quit");
+                        break;
+                }
+            }
+        } else {
+            System.out.println("Mismatch details");
+        }
+
+    }
+}
