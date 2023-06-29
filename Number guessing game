@@ -1,0 +1,63 @@
+import java.util.*;
+import java.util.Scanner;
+
+public class Guessgame {
+    static int guess;
+    static int number;
+    static int point = 0;
+
+    public static void Guessgame() {
+        Scanner s = new Scanner(System.in);
+        number = 1 + (int) (100 * Math.random());
+        int k = 5;
+        int i;
+        System.out.println(
+                "NUMBER GUESSING GAME RULES:\n 1-THE NUMBER IS CHOOSEN BETWEEN 1 TO 100\n 2-TOTAL NUMBER OF ATTEMPTS IS FIVE/5");
+        for (i = 0; i < k; i++) {
+            System.out.println("ENTER THE GUESS NUMBER:");
+            guess = s.nextInt();
+            if (number == guess) {
+                System.out.println("CONGRATULATIONS!" + "You Guessed the number.");
+                rounds();
+                break;
+            } else if (number > guess && i != k - 1) {
+                System.out.println("THE NUMBER IS" + "GREATER THAN" + guess);
+            } else if (number < guess && i != k - 1) {
+                System.out.println("THE NUMBER IS " + "LESS THAN" + guess);
+
+            }
+        }
+        if (i == k) {
+            System.out.println("YOU HAVE EXHAUSTED YOUR LIMIT:");
+            System.out.println("THE NUMBER WAS" + number);
+            rounds();
+        }
+    }
+
+    public static void rounds() {
+        System.out.println("DO YOU  PLAY ONE MORE ROUND \n ENTER 1-YES\n ENTER 2-NO");
+        Scanner s = new Scanner(System.in);
+        int a = s.nextInt();
+        if (a == 1) {
+            Guessgame();
+
+        } else {
+            System.out.println("PLAY NEXT TIME THANKS FOR PLAYING!");
+            if (number == guess) {
+                point++;
+                System.out.println("TOTAL ATTEMPT NUMBER" + point + "+ POINT IS:" + point);
+
+            } else {
+                System.out.println("YOUR POINT IS:" + point);
+            }
+            System.out.println("TOTAL SCORE IS:" + point * 2);
+        }
+    }
+
+    public static void main(String args[]) {
+        System.out.println("NAME:NUMBER GUESSING GAME");
+        Guessgame();
+
+    }
+
+}
