@@ -72,16 +72,16 @@ public class task2 {
                 int option = sc.nextInt();
                 switch (option) {
                     case 1:
-                        System.out.println(deposit());
+                        System.out.println("Amount after deposit  " + deposit());
                         break;
                     case 2:
-                        System.out.println(withdraw());
+                        System.out.println("Amount after withdraw  " + withdraw());
                         break;
                     case 3:
-                        System.out.println(transfer());
+                        System.out.println("Amount after transfer  " + transfer());
                         break;
                     case 4:
-                        System.out.println(transhistory());
+                        System.out.println("Transaction details  " + transhistory());
                         break;
                     case 5:
                         flag = false;
