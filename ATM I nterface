@@ -9,6 +9,7 @@ public class task2 {
     static int c = 0;
     static String recv_num;
     static int amt_transfer;
+    static int amt;
 
     public static boolean login() {
         System.out.println(" enter p");
@@ -33,9 +34,15 @@ public class task2 {
 
     public static int withdraw() {
         System.out.println(" enter amount to withdraw");
-        at = at - sc.nextInt();
-        history += " Amount withdrawed ";
-        c++;
+        amt = sc.nextInt();
+        if (amt > at) {
+            System.out.println("Insufficient Amount");
+        } else {
+            at = at - amt;
+
+            history += " Amount withdrawed ";
+            c++;
+        }
         return at;
     }
 
@@ -44,9 +51,13 @@ public class task2 {
         recv_num = sc.next();
         System.out.println(" enter amount to transfer");
         amt_transfer = sc.nextInt();
-        at = at - amt_transfer;
-        history += "Amount Transfered ";
-        c++;
+        if (amt < amt_transfer) {
+            System.out.println("Insufficient Amount to transfer");
+        } else {
+            at = at - amt_transfer;
+            history += "Amount Transfered ";
+            c++;
+        }
         return at;
     }
 
@@ -75,10 +86,10 @@ public class task2 {
                         System.out.println("Amount after deposit  " + deposit());
                         break;
                     case 2:
-                        System.out.println("Amount after withdraw  " + withdraw());
+                        System.out.println("Available balance " + withdraw());
                         break;
                     case 3:
-                        System.out.println("Amount after transfer  " + transfer());
+                        System.out.println("Available balance  " + transfer());
                         break;
                     case 4:
                         System.out.println("Transaction details  " + transhistory());
